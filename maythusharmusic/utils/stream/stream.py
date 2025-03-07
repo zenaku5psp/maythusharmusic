@@ -63,7 +63,7 @@ from maythusharmusic.utils.inline import (
 )
 from maythusharmusic.utils.pastebin import HottyBin
 from maythusharmusic.utils.stream.queue import put_queue, put_queue_index
-from youtubesearchpython.__future__ import VideosSearch
+from maythusharmusic.utils.thumbnails import get_thumb
 
 
 async def stream(
