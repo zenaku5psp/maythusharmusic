@@ -9,8 +9,8 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 
-from maythusharmusic.utils.database import is_on_off
-from maythusharmusic.utils.formatters import time_to_seconds
+from CaiLinXMusic.utils.database import is_on_off
+from CaiLinXMusic.utils.formatters import time_to_seconds
 
 
 
@@ -301,8 +301,14 @@ class YouTubeAPI:
                 "format": "bestaudio/best",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
+                "ignoreerrors": True,
                 "nocheckcertificate": True,
+                "nocontinue": True,
+                "embedthumbnail": True,
                 "quiet": True,
+                "xattrs": True,
+                "force_keyframes_at_cuts": True,
+                "postprocessor_args": ["-metadata", "title=%(title)s", "-metadata", "artist=%(uploader)s"],
                 "cookiefile" : cookie_txt_file(),
                 "no_warnings": True,
             }
@@ -353,18 +359,27 @@ class YouTubeAPI:
             fpath = f"downloads/{title}.%(ext)s"
             ydl_optssx = {
                 "format": format_id,
+                "outtmpl": f"{download_dir}/%(title)s.%(ext)s",
                 "outtmpl": fpath,
                 "geo_bypass": True,
                 "nocheckcertificate": True,
+                "ignoreerrors": True,
+                "geo_bypass": True,
+                "force_keyframes_at_cuts": True,
+                "nocontinue": True,
+                "addmetadata": True,
                 "quiet": True,
+                "embedthumbnail": True,
                 "no_warnings": True,
+                "xattrs": True,
+                "postprocessor_args": ["-metadata", "title=%(title)s", "-metadata", "artist=%(uploader)s"],
                 "cookiefile" : cookie_txt_file(),
                 "prefer_ffmpeg": True,
                 "postprocessors": [
                     {
                         "key": "FFmpegExtractAudio",
                         "preferredcodec": "mp3",
-                        "preferredquality": "192",
+                        "preferredquality": "320",
                     }
                 ],
             }
