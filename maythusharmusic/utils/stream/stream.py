@@ -1,49 +1,7 @@
+
 import os
 from random import randint
 from typing import Union
-import random
-import string
-import asyncio
-from pyrogram import client, filters
-from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
-from pytgcalls.exceptions import NoActiveGroupCall
-from maythusharmusic.utils.database import get_assistant
-import config
-from maythusharmusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from maythusharmusic.core.call import Hotty
-from maythusharmusic.misc import SUDOERS
-from maythusharmusic.utils import seconds_to_min, time_to_seconds
-from maythusharmusic.utils.channelplay import get_channeplayCB
-from maythusharmusic.utils.decorators.language import languageCB
-from maythusharmusic.utils.decorators.play import PlayWrapper
-from maythusharmusic.utils.formatters import formats
-from maythusharmusic.utils.inline import (
-    botplaylist_markup,
-    livestream_markup,
-    playlist_markup,
-    slider_markup,
-    track_markup,
-)
-from maythusharmusic.utils.database import (
-    add_served_chat,
-    add_served_user,
-    blacklisted_chats,
-    get_lang,
-    is_banned_user,
-    is_on_off,
-)
-from maythusharmusic.utils.logger import play_logs
-from config import BANNED_USERS, lyrical
-from time import time
-from maythusharmusic.utils.extraction import extract_user
-
-# Define a dictionary to track the last message timestamp for each user
-user_last_message_time = {}
-user_command_count = {}
-# Define the threshold for command spamming (e.g., 20 commands within 60 seconds)
-SPAM_THRESHOLD = 2
-SPAM_WINDOW_SECONDS = 5
-
 
 from pyrogram.types import InlineKeyboardMarkup
 
@@ -53,14 +11,7 @@ from maythusharmusic.core.call import Hotty
 from maythusharmusic.misc import db
 from maythusharmusic.utils.database import add_active_video_chat, is_active_chat
 from maythusharmusic.utils.exceptions import AssistantErr
-from maythusharmusic.utils.inline import (
-    aq_markup,
-    queuemarkup,
-    close_markup,
-    stream_markup,
-    stream_markup2,
-    panel_markup_4,
-)
+from maythusharmusic.utils.inline import aq_markup, close_markup, stream_markup
 from maythusharmusic.utils.pastebin import HottyBin
 from maythusharmusic.utils.stream.queue import put_queue, put_queue_index
 from maythusharmusic.utils.thumbnails import get_thumb
@@ -128,7 +79,7 @@ async def stream(
                         vidid, mystic, video=status, videoid=True
                     )
                 except:
-                    await mystic.edit_text(_["play_3"])
+                    raise AssistantErr(_["play_14"])
                 await Hotty.join_call(
                     chat_id,
                     original_chat_id,
@@ -149,25 +100,24 @@ async def stream(
                     forceplay=forceplay,
                 )
                 img = await get_thumb(vidid)
-                button = stream_markup(_, vidid, chat_id)
+                button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
                     photo=img,
                     caption=_["stream_1"].format(
                         f"https://t.me/{app.username}?start=info_{vidid}",
-                        title[:18],
+                        title[:23],
                         duration_min,
                         user_name,
                     ),
                     reply_markup=InlineKeyboardMarkup(button),
                 )
-
                 db[chat_id][0]["mystic"] = run
                 db[chat_id][0]["markup"] = "stream"
         if count == 0:
             return
         else:
-            link = await brandedBin(msg)
+            link = await HottyBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -193,7 +143,7 @@ async def stream(
                 vidid, mystic, videoid=True, video=status
             )
         except:
-            await mystic.edit_text(_["play_3"])
+            raise AssistantErr(_["play_14"])
         if await is_active_chat(chat_id):
             await put_queue(
                 chat_id,
@@ -206,15 +156,11 @@ async def stream(
                 user_id,
                 "video" if video else "audio",
             )
-            img = await get_thumb(vidid)
             position = len(db.get(chat_id)) - 1
             button = aq_markup(_, chat_id)
-            await app.send_photo(
+            await app.send_message(
                 chat_id=original_chat_id,
-                photo=img,
-                caption=_["queue_4"].format(
-                    position, title[:18], duration_min, user_name
-                ),
+                text=_["queue_4"].format(position, title[:27], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
             )
         else:
@@ -240,19 +186,18 @@ async def stream(
                 forceplay=forceplay,
             )
             img = await get_thumb(vidid)
-            button = stream_markup(_, vidid, chat_id)
+            button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
                 photo=img,
                 caption=_["stream_1"].format(
                     f"https://t.me/{app.username}?start=info_{vidid}",
-                    title[:18],
+                    title[:23],
                     duration_min,
                     user_name,
                 ),
                 reply_markup=InlineKeyboardMarkup(button),
             )
-
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "stream"
     elif streamtype == "soundcloud":
@@ -275,7 +220,7 @@ async def stream(
             button = aq_markup(_, chat_id)
             await app.send_message(
                 chat_id=original_chat_id,
-                text=_["queue_4"].format(position, title[:18], duration_min, user_name),
+                text=_["queue_4"].format(position, title[:27], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
             )
         else:
@@ -294,7 +239,7 @@ async def stream(
                 "audio",
                 forceplay=forceplay,
             )
-            button = stream_markup2(_, chat_id)
+            button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
                 photo=config.SOUNCLOUD_IMG_URL,
@@ -327,7 +272,7 @@ async def stream(
             button = aq_markup(_, chat_id)
             await app.send_message(
                 chat_id=original_chat_id,
-                text=_["queue_4"].format(position, title[:18], duration_min, user_name),
+                text=_["queue_4"].format(position, title[:27], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
             )
         else:
@@ -348,7 +293,7 @@ async def stream(
             )
             if video:
                 await add_active_video_chat(chat_id)
-            button = stream_markup2(_, chat_id)
+            button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
                 photo=config.TELEGRAM_VIDEO_URL if video else config.TELEGRAM_AUDIO_URL,
@@ -380,7 +325,7 @@ async def stream(
             button = aq_markup(_, chat_id)
             await app.send_message(
                 chat_id=original_chat_id,
-                text=_["queue_4"].format(position, title[:18], duration_min, user_name),
+                text=_["queue_4"].format(position, title[:27], duration_min, user_name),
                 reply_markup=InlineKeyboardMarkup(button),
             )
         else:
@@ -409,7 +354,7 @@ async def stream(
                 forceplay=forceplay,
             )
             img = await get_thumb(vidid)
-            button = stream_markup2(_, chat_id)
+            button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
                 photo=img,
@@ -464,7 +409,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            button = stream_markup2(_, chat_id)
+            button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
                 photo=config.STREAM_IMG_URL,
@@ -474,4 +419,3 @@ async def stream(
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
             await mystic.delete()
-
