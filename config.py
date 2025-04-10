@@ -43,7 +43,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/sasukevipmusicbotsupport")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/sasukemusicbotsupportchat")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+h-lrv0RTtcs4NGQ1")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -68,7 +68,7 @@ SONG_DOWNLOAD_DURATION_LIMIT = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "2000"
 
 # Telegram audio and video file size limit (in bytes)
 TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 104857600))
-TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 1073741824))
+TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 2097152000))
 # Checkout https://www.gbmb.org/mb-to-bytes for converting mb to bytes
 
 
