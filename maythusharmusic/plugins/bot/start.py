@@ -24,6 +24,7 @@ from maythusharmusic.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
 
+
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
@@ -43,19 +44,19 @@ async def start_pm(client, message: Message, _):
             raise UserNotParticipant
 
     except UserNotParticipant:
-        return await message.reply_text(
-            text="<b>๏ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ [๏ sᴜᴘᴘᴏʀᴛ ๏](https://t.me/sasukemusicsupportchat) ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ !</b>\n\n"
-                 "<b>๏ ᴀғᴛᴇʀ ᴊᴏɪɴ ᴛʜᴇ [๏ ᴄʜᴀɴɴᴇʟ ๏](https://t.me/sasukevipmusicbotsupport) ᴄᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴛʏᴘᴇ /start ᴀɢᴀɪɴ !</b>\n\n",
+        return await message.reply_photo(
+            photo=config.JOIN_IMG_URL, # ပုံလိပ်စာကို config ကနေယူထား
+            caption="ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ [๏ sᴜᴘᴘᴏʀᴛ ๏](https://t.me/sasukemusicsupportchat) ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜꜱᴇ ᴛʜᴇ ʙᴏᴛ !\nᴀғᴛᴇʀ ᴊᴏɪɴ ᴛʜᴇ [๏ ᴄʜᴀɴɴᴇʟ ๏](https://t.me/sasukevipmusicbotsupport) ᴄᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴛʏᴘᴇ /start ᴀɢᴀɪɴ !",
             reply_markup=InlineKeyboardMarkup([
                 [
                     InlineKeyboardButton(" ᴊᴏɪɴ ", url=config.SUPPORT_CHAT),
                     InlineKeyboardButton(" ᴊᴏɪɴ ", url=config.SUPPORT_CHANNEL)
                 ]
             ]),
-            disable_web_page_preview=True
         )
     except Exception as e:
-        return await message.reply_text(f"Error checking channel membership: {e}")
+        print(f"Error checking membership: {e}")
+        return await message.reply_text("⚠️ စစ်ဆေးမှုတွင် အမှားတစ်ခုဖြစ်နေပါသည်။ အက်မင်းကို အကြောင်းကြားပါ။")
 
     # Original start command handling
     if len(message.text.split()) > 1:
