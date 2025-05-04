@@ -1,9 +1,9 @@
 services:
   - type: worker
-    name: maythusharmusic
+    name: maythusharmusicvv1
     env: python
-    region: singapore
     plan: pro
+    region: virginia
     buildCommand: pip3 install --no-cache-dir --upgrade --requirement requirements.txt
     startCommand: bash start
     envVars:
