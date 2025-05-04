@@ -32,6 +32,13 @@
 
 </p>
 
+<p align="center">
+    <a href="https://render.com/deploy?repo=https://github.com/zenaku555usm/maythusharmusic">
+        <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" width="220" height="38.45"/>
+    </a>
+</p>
+
+
 **𝙏𝙀𝙎𝙏 𝘽𝙊𝙏 ➣ [˹𝐁ʀᴀɴᴅᴇᴅ ꭙ 𝐂ʀᴇᴡ ꭙ 𝐌ᴜꜱɪᴄ™ ˹ʙꜱ](https://t.me/CrewMusic_bot)**
 
 
