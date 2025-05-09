@@ -25,6 +25,14 @@ from maythusharmusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
+SEARCH_STICKERS = [
+    "CAACAgUAAxkBAAEOb4toHbVadPfgqoJKbfD9S7TC2TNm-QACWhQAArSQ8FRNkWtqm_IBdzYE",
+    "CAACAgUAAxkBAAEOb41oHbVu6JNTP7VTvaSNg3pmJR3VFAAC7RcAArv58VTYZgtSMjeROzYE",
+    "CAACAgUAAxkBAAEOb7NoHb0HhPyXo7b1wl0sMwHvGFoMkgACJxQAAtnx8VTnL9rRHRC49TYE",
+    "CAACAgUAAxkBAAEOb7VoHb14Cxxj1SaNVdxWaogFhl-LNQACHRQAAhem8FQ99HLQE6Cz1jYE" 
+]
+
+
 @app.on_message(
     filters.command(
         [
@@ -54,9 +62,11 @@ async def play_commnd(
     url,
     fplay,
 ):
-    mystic = await message.reply_text(
-        _["play_2"].format(channel) if channel else _["play_1"]
-    )
+    if channel:
+        mystic = await message.reply_text(_["play_2"].format(channel))
+    else:
+        selected_sticker = random.choice(SEARCH_STICKERS)
+        mystic = await message.reply_sticker(selected_sticker)
     plist_id = None
     slider = None
     plist_type = None
