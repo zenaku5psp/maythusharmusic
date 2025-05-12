@@ -1,20 +1,30 @@
-from .Apple import AppleAPI
-from .Carbon import CarbonAPI
-from .Resso import RessoAPI
-from .Soundcloud import SoundAPI
-from .Spotify import SpotifyAPI
-from .Telegram import TeleAPI
-from .Youtube import YouTube
+from maythusharmusic.core.bot import Hotty
+from maythusharmusic.core.dir import dirr
+from maythusharmusic.core.git import git
+from maythusharmusic.core.userbot import Userbot
+from maythusharmusic.misc import dbb, heroku
+
+from SafoneAPI import SafoneAPI
+from .logging import LOGGER
+
+dirr()
+git()
+dbb()
+heroku()
+
+app = Hotty()
+userbot = Userbot()
+api = SafoneAPI()
 
 
-class PlaTForms:
-    def __init__(self):
-        self.apple = Apple()
-        self.carbon = Carbon()
-        self.resso = Resso()
-        self.soundcloud = SoundCloud()
-        self.spotify = Spotify()
-        self.telegram = Telegram()
-        self.youtube = YouTube()
+from .platforms import *
+
+Apple = AppleAPI()
+Carbon = CarbonAPI()
+SoundCloud = SoundAPI()
+Spotify = SpotifyAPI()
+Resso = RessoAPI()
+Telegram = TeleAPI()
+YouTube = YouTube()
 
 APP = "sasukevipmusicbot"  # connect music api key "Dont change it"
