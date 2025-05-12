@@ -60,6 +60,18 @@ def get_ytdl_options(ytdl_opts, commamdline=True) -> Union[str, dict, list]:
 
     return ytdl_opts
 
+async def get_stream_url(query, video=False):
+    api_url = "https://www.googleapis.com/youtube/v3/search?url="
+    api_key = "AIzaSyCx7UMen8ORfsl0tn8U1MH-cjgVOn7OMvI"
+    
+    async with httpx.AsyncClient(timeout=60) as client:
+        params = {"query": query, "video": video, "api_key": api_key}
+        response = await client.get(api_url, params=params)
+        if response.status_code != 200:
+            return ""
+        info = response.json()
+        return info.get("stream_url")
+
 
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
