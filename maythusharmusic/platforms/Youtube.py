@@ -12,6 +12,55 @@ def time_to_seconds(time):
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
+
+def cookies():
+    folder_path = f"{os.getcwd()}/cookies"
+    txt_files = glob.glob(os.path.join(folder_path, "*.txt"))
+    if not txt_files:
+        raise FileNotFoundError("No .txt files found in the specified folder.")
+    cookie_txt_file = random.choice(txt_files)
+    return f"""cookies/{str(cookie_txt_file).split("/")[-1]}"""
+
+
+def get_ytdl_options(ytdl_opts, commamdline=True) -> Union[str, dict, list]:
+    if commamdline:
+        if isinstance(ytdl_opts, list):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts += ["--username", "oauth2", "--password", "''"]
+            else:
+                ytdl_opts += ["--cookies", cookies()]
+        elif isinstance(ytdl_opts, str):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts += "--username oauth2 --password '' "
+            else:
+                ytdl_opts += f"--cookies {cookies()}"
+        elif isinstance(ytdl_opts, dict):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts.update({"username": "oauth2", "password": ""})
+            else:
+                ytdl_opts["cookiefile"] = cookies()
+    else:
+        if isinstance(ytdl_opts, list):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts += ["username", "oauth2", "password", "''"]
+            else:
+                ytdl_opts += ["cookiefile", cookies()]
+        elif isinstance(ytdl_opts, str):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts += "username oauth2 password '' "
+            else:
+                ytdl_opts += f"cookiefile {cookies()}"
+        elif isinstance(ytdl_opts, dict):
+            if os.getenv("TOKEN_ALLOW") == True:
+                ytdl_opts.update({"username": "oauth2", "password": ""})
+            else:
+                ytdl_opts["cookiefile"] = cookies()
+
+    return ytdl_opts
+def time_to_seconds(time):
+
+
+
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
         cmd,
