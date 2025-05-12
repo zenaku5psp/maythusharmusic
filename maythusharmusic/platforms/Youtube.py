@@ -80,6 +80,8 @@ class YouTube:
     def __init__(self):
         self.base = "https://www.youtube.com/watch?v="
         self.regex = r"(?:youtube\.com|youtu\.be)"
+        self.api_url = "https://www.googleapis.com/youtube/v3/search?url="
+        self.api_key = "AIzaSyCx7UMen8ORfsl0tn8U1MH-cjgVOn7OMvI"
         self.status = "https://www.youtube.com/oembed?url="
         self.listbase = "https://youtube.com/playlist?list="
         self.reg = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
