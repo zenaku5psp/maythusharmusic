@@ -11,7 +11,7 @@ import aiofiles
 import httpx
 
 from config import DOWNLOADS_DIR, API_KEY, API_URL
-from AnonXMusic.logging import LOGGER
+from maythusharmusic.logging import LOGGER
 
 
 @dataclass
