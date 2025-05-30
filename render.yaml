@@ -11,10 +11,6 @@ services:
         value: "20078321"
       - key: API_HASH
         value: "c8ed904e4aac83cea1f27b73984debad"
-      - key: API_KEY
-        value: "Rf1qda5gyCITj6VbrekzRxmR"
-      - key: API_URL
-        value: "http://deadlinetech.site"
       - key: BOT_TOKEN
         value: "7418613978:AAEKb1SAjIC8qChfifv31vK2iWGkPNe7mnQ"
       - key: MONGO_DB_URI
