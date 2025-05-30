@@ -11,7 +11,7 @@ from maythusharmusic.utils.database import get_client, is_active_chat, is_autoen
 
 async def auto_leave():
     if config.AUTO_LEAVING_ASSISTANT:
-        while not await asyncio.sleep(10000):
+        while not await asyncio.sleep(25200):
             from maythusharmusic.core.userbot import assistants
 
             for num in assistants:
