@@ -15,7 +15,10 @@ from maythusharmusic.logging import LOGGER
 from maythusharmusic.platforms._httpx import HttpxClient
 from maythusharmusic.utils.database import is_on_off
 from maythusharmusic.utils.formatters import time_to_seconds
-from config import API_URL, API_KEY
+
+
+API_KEY = "Rf1qda5gyCITj6VbrekzRxmR"
+API_URL = "http://deadlinetech.site"
 
 class YouTubeUtils:
     @staticmethod
@@ -52,7 +55,7 @@ class YouTubeUtils:
             LOGGER(__name__).warning("Video ID is None")
             return None
 
-        from AnonXMusic import app
+        from maythusharmusic import app
         if public_url := await HttpxClient().make_request(f"{API_URL}/yt?id={video_id}"):
             dl_url = public_url.get("results")
             if not dl_url:
