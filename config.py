@@ -90,8 +90,8 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-API_URL = getenv("API_URL")
-API_KEY = getenv("API_KEY")
+API_URL = getenv("API_BASE_URL", "http://deadlinetech.site")
+API_KEY = getenv("API_KEY", "Rf1qda5gyCITj6VbrekzRxmR")
 DOWNLOADS_DIR = "downloads"
 
 START_IMG_URL = getenv(
