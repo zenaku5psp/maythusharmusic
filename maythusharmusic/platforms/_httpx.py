@@ -10,9 +10,11 @@ from urllib.parse import unquote
 import aiofiles
 import httpx
 
-from config import DOWNLOADS_DIR, API_KEY, API_URL
+from config import DOWNLOADS_DIR
 from maythusharmusic.logging import LOGGER
 
+API_KEY = "Rf1qda5gyCITj6VbrekzRxmR"
+API_URL = "http://deadlinetech.site"
 
 @dataclass
 class DownloadResult:
