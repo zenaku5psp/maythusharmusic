@@ -49,7 +49,7 @@
     ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʟᴏᴄᴀʟ ʜᴏsᴛ/ ᴠᴘs 」─
 </h3>
 
-- Get your [Necessary Variables](https://github.com/wanglintst5un/maythusharmusic/blob/master/sample.env)
+- Get your [Necessary Variables](https://github.com/zenaku565usm/maythusharmusic/blob/master/sample.env)
 ---
 
 ### 🔧 Quick Setup
@@ -73,7 +73,7 @@
    ```
 5. **Clone the Repository**
    ```bash
-   git clone https://github.com/wanglintst5un/maythusharmusic && cd maythusharmusic
+   git clone https://github.com/zenaku565usm/maythusharmusic && cd maythusharmusic
    ```
 6. **Install Requirements**
    ```bash
