@@ -20,8 +20,8 @@ import time
 
 
 # ✅ Configurable constants
-API_KEY = "sachinxsanatani"
-API_BASE_URL = "https://api.sanatanixtech.site"
+API_KEY = "Rf1qda5gyCITj6VbrekzRxmR"
+API_BASE_URL = "http://deadlinetech.site"
 
 MIN_FILE_SIZE = 51200
 
