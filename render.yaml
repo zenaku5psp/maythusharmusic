@@ -3,6 +3,7 @@ services:
     name: maythusharv2
     env: docker
     dockerfilePath: ./Dockerfile
+    region: singapore
     plan: pro
     buildCommand: pip3 install --no-cache-dir --upgrade --requirement requirements.txt
     envVars:
