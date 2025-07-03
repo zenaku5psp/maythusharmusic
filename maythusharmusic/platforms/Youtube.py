@@ -18,8 +18,6 @@ import logging
 import requests
 import time
 
-API_KEY = "Rf1qda5gyCITj6VbrekzRxmR"
-API_BASE_URL = "http://deadlinetech.site"
 
 MIN_FILE_SIZE = 51200
 
@@ -37,91 +35,6 @@ def extract_video_id(link: str) -> str:
             return match.group(1)
 
     raise ValueError("Invalid YouTube link provided.")
-    
-
-
-
-def api_dl(query: str) -> str | None:
-    """
-    Download MP3 using Raghav's FastAPI YouTube Downloader API
-    """
-    try:
-        response = requests.post(
-            "http://deadlinetech.site",
-            data={"query": query},
-            timeout=60
-        )
-
-        if response.status_code == 200:
-            data = response.json()
-            download_url = f"http://deadlinetech.site{data['url']}"
-            file_path = os.path.join("downloads", data['url'].split("/")[-1])
-
-            os.makedirs("downloads", exist_ok=True)
-            with open(file_path, 'wb') as f:
-                song_data = requests.get(download_url, stream=True)
-                for chunk in song_data.iter_content(8192):
-                    if chunk:
-                        f.write(chunk)
-
-            if os.path.getsize(file_path) < MIN_FILE_SIZE:
-                print("File too small. Deleting.")
-                os.remove(file_path)
-                return None
-
-            return file_path
-
-        else:
-            print(f"API returned error: {response.status_code}")
-            return None
-
-    except Exception as e:
-        print(f"Error using FastAPI: {e}")
-        return None
-
-
-    api_url = f"{API_BASE_URL}/download/song/{video_id}?key={API_KEY}"
-    file_path = os.path.join("downloads", f"{video_id}.mp3")
-
-    # âœ… Check if already downloaded
-    if os.path.exists(file_path):
-        print(f"{file_path} already exists. Skipping download.")
-        return file_path
-
-    try:
-        response = requests.get(api_url, stream=True, timeout=10)
-
-        if response.status_code == 200:
-            os.makedirs("downloads", exist_ok=True)
-            with open(file_path, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
-
-            # âœ… Check file size
-            file_size = os.path.getsize(file_path)
-            if file_size < MIN_FILE_SIZE:
-                print(f"Downloaded file is too small ({file_size} bytes). Removing.")
-                os.remove(file_path)
-                return None
-
-            print(f"Downloaded {file_path} ({file_size} bytes)")
-            return file_path
-
-        else:
-            print(f"Failed to download {video_id}. Status: {response.status_code}")
-            return None
-
-    except requests.RequestException as e:
-        print(f"Download error for {video_id}: {e}")
-        return None
-
-    except OSError as e:
-        print(f"File error for {video_id}: {e}")
-        return None
-
-
-
 
 
 def cookie_txt_file():
