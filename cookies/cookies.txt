@@ -2,7 +2,7 @@
 # http://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file!  Do not edit.
 
-.youtube.com	TRUE	/	TRUE	1786104803	PREF	tz=Asia.Rangoon&f7=100
+.youtube.com	TRUE	/	TRUE	1786110053	PREF	tz=Asia.Rangoon
 .youtube.com	TRUE	/	TRUE	1777859720	__Secure-1PSIDTS	sidts-CjIBjplskBl7sAESU0xoOxpRjUGcZQbpQTnI4Jx5KDrEnA-vFRnxwfw4fuWhxuy-8SDAbBAA
 .youtube.com	TRUE	/	TRUE	1777859720	__Secure-3PSIDTS	sidts-CjIBjplskBl7sAESU0xoOxpRjUGcZQbpQTnI4Jx5KDrEnA-vFRnxwfw4fuWhxuy-8SDAbBAA
 .youtube.com	TRUE	/	FALSE	1786104802	HSID	AMwhY2shNKjn766Gh
@@ -15,6 +15,6 @@
 .youtube.com	TRUE	/	FALSE	1786104802	SID	g.a000ygiljuY68Mo20h3VGWcqwybHTtE9PijGQbueuJA9TNM0Xs9UvXDyfn4JsMJWDqWKeGCzLwACgYKAd8SARcSFQHGX2Mi7wlb6Yce_CbmJuuVdg1zLxoVAUF8yKqZLMPcEJseexfp8Zt6d8Dd0076
 .youtube.com	TRUE	/	TRUE	1786104802	__Secure-1PSID	g.a000ygiljuY68Mo20h3VGWcqwybHTtE9PijGQbueuJA9TNM0Xs9Ul0ZB7yhmLm69rhlymFIKLAACgYKAa8SARcSFQHGX2Mi9NgZkhuFzsxrvDCvwXxHJRoVAUF8yKoU1zuMhHoQ_mC1DuVuKraS0076
 .youtube.com	TRUE	/	TRUE	1786104802	__Secure-3PSID	g.a000ygiljuY68Mo20h3VGWcqwybHTtE9PijGQbueuJA9TNM0Xs9UZxctmf-44oIpYPI8LyPMAgACgYKAaQSARcSFQHGX2MiM0r0ScPa2hNjvH7QR-qErhoVAUF8yKqvxGpuyRmSi5a8n6QoiIqi0076
-.youtube.com	TRUE	/	FALSE	1783080847	SIDCC	AKEyXzXYaetz-Jz5sugMikHqFBahQ_agEaBqAFXpns8ljcY2Uf2OHc9vSf-kplU15v_HvSjcfQ
-.youtube.com	TRUE	/	TRUE	1783080847	__Secure-1PSIDCC	AKEyXzUy7bZxjqn-4SWrlRHHRFx9W4lPqSGyOjv3q_l0rkmXnXQDIKfuhXWesT6IIXJxIuINE0o
-.youtube.com	TRUE	/	TRUE	1783080847	__Secure-3PSIDCC	AKEyXzVhP5Pv315DAoy0IhJo_YRYoOlIqUPfREjSsYQZ3X1JL0zPcglau71S0aQwZELvnz0HX3k
+.youtube.com	TRUE	/	FALSE	1783086060	SIDCC	AKEyXzWs0mFR7LzFWuH792nZw6QAVmZJqDqg6HQKluBLeIOVIvq0NG_BeysADieAAkv-fk2e5w
+.youtube.com	TRUE	/	TRUE	1783086060	__Secure-1PSIDCC	AKEyXzUyPa7ezE1Z_QeL93pAdKF3NOD2_dOi0y2Da9KPrrndldzxcARVWQntVf0F3ptNbNbepi8
+.youtube.com	TRUE	/	TRUE	1783086060	__Secure-3PSIDCC	AKEyXzU2T4InfBe0AZdkT9amvDazjeHmb1xPmF5BAboHjRkkNRlrUeR1iPGWSGl27L_tWYD3XuQ
