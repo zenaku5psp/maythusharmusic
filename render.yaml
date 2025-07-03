@@ -3,8 +3,8 @@ services:
     name: maythusharv2
     env: docker
     dockerfilePath: ./Dockerfile
-    plan: pro plus
-    region: oregon
+    plan: pro
+    region: frankfurt
     buildCommand: pip3 install --no-cache-dir --upgrade --requirement requirements.txt
     envVars:
       - key: API_ID
