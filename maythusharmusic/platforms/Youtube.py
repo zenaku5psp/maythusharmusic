@@ -20,14 +20,12 @@ import random
 import logging
 
 cookies_file = "assets/cookies.txt"
-_cache = {}
-
 
 async def check_file_size(link):
     async def get_format_info(link):
         proc = await asyncio.create_subprocess_exec(
             "yt-dlp",
-            "--cookies", cookie_txt_file(),
+            "cookiefile": cookies_file,
             "-J",
             link,
             stdout=asyncio.subprocess.PIPE,
