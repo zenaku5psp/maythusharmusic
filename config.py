@@ -46,6 +46,9 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
 
+SUPPORT_CHANNEL_LINK = getenv("SUPPORT_CHANNEL_LINK", "@JBmusic_myanmar")
+SUPPORT_CHAT_LINK = getenv("SUPPORT_CHAT_LINK", "@JBmusic_myanmar2002")
+
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/JBmusic_myanmar")
 SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/JBmusic_myanmar2002")
 
@@ -100,6 +103,7 @@ PING_IMG_URL = getenv(
 )
 PLAYLIST_IMG_URL = "https://files.catbox.moe/0gdu2w.jpg"
 STATS_IMG_URL = "https://files.catbox.moe/0gdu2w.jpg"
+JOIN_IMG_URL = "https://files.catbox.moe/61mg5q.jpg"
 TELEGRAM_AUDIO_URL = "https://files.catbox.moe/0gdu2w.jpg"
 TELEGRAM_VIDEO_URL = "https://files.catbox.moe/0gdu2w.jpg"
 STREAM_IMG_URL = "https://files.catbox.moe/tyeotp.jpg"
