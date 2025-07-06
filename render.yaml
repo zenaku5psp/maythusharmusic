@@ -20,6 +20,6 @@ services:
       - key: LOGGER_ID
         value: "-1002016915736"
       - key: COOKIE_URL
-        value: "https://batbin.me/halocaine"
+        value: "https://batbin.me/finner"
       - key: STRING_SESSION
         value: "BQFjjDoADzsEUMCArwvP6oG84llk4NTMt6Ks8_9S9Z1YqM9Y-heyWah8PQzcC4SXkglooTPpsfqEbbs881oJcG9zKu1ZydknDnQpPSo0_EvQ176zVqCEcf0UzqfalkdqF_3bwblUCxJ6e7xHMsK1nPn1yeG7Qgs3QmsYN7eZOp-7LPsEwoOJap8odlPzVP4eWkjk2NT-2hGLAIVbTAPB7bnTpSGdh96vpmkXULaVLl34aj0h6PcZ2b8OGEZhcLu_MvLtFdoH1Xnl9IkcU6FRH_RKuFb2UaLng8OGJ8KCmXOsQhg99f2TYpcTT1a9qkXFir_81lnJI8ERduepGqgOWEQBz_jitAAAAAFsjYQzAA"
