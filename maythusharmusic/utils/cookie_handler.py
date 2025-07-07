@@ -1,4 +1,4 @@
-import requests
+'''import requests
 from config import COOKIE_URL
 from maythusharmusic.utils.errors import capture_internal_err
 from maythusharmusic.logging import LOGGER
